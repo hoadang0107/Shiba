@@ -12,12 +12,15 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="{{route('signin')}}" class="login-panel"><i class="fa fa-user"></i>Login</a>
+
+                   
+                    <li><a href="#" class="login-panel"><i class="fa fa-user"></i>User</a>
+                    
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="../fashi/img/flag-1.jpg" data-imagecss="flag yt"
                                 data-title="English">English</option>
-                            <option value='yu' data-image="../fashi/img/flag-4.png" data-imagecss="flag yu"
+                            <option value='yu' data-image="../fashi/img/flag-2.jpg" data-imagecss="flag yu"
                                 data-title="Japanese">Japanese </option>
                         </select>
                     </div>

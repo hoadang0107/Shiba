@@ -376,7 +376,12 @@ ol {
 	float: right;
 }
 
-.header-top .ht-right .login-panel {
+
+.header-top .ht-right {
+	float: right;
+}
+
+.header-top .ht-right li .login-panel {
 	float: right;
 	font-size: 14px;
 	color: #252525;
@@ -387,7 +392,7 @@ ol {
 	padding-bottom: 15px;
 }
 
-.header-top .ht-right .login-panel i {
+.header-top .ht-right li .login-panel i {
 	margin-right: 8px;
 }
 
