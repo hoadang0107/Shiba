@@ -54,3 +54,7 @@ Route::get('addStore',[
     'as'=> 'addStore',
     'uses' => 'PageController@getAddStore'
 ]);
+Route::get('restaurant-detail/{id}',[
+    'as'=> 'restaurant-detail',
+    'uses' => 'RestaurantController@getRestaurant'
+]);

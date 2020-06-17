@@ -13,7 +13,17 @@ use App\Services\UserService;
 class PageController extends BaseController
 {
     public function getIndex(){
-        return view('page.Homepage');
+         $resRef = null;
+         try {
+             $resRef = $this->database->getReference('restaurants');
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+        $restaurants = $resRef->getValue();
+        foreach ($restaurants as $restaurant) {
+            $all_res[] = $restaurant;
+        }
+        return view('page.Homepage', compact('all_res'));
     }
 
     public function getSignUp(){
