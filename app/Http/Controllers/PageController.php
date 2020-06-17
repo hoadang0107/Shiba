@@ -14,12 +14,19 @@ use Illuminate\Support\Facades\View;
 class PageController extends BaseController
 {
 
-    
-    public function getIndex(Request $request){
-        $user = $request->session()->get('user');
-        View::share('user', $user);
-        return view('page.Homepage',['user'=>$user]);
-        
+    public function getIndex(){
+         $resRef = null;
+         try {
+             $resRef = $this->database->getReference('restaurants');
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+        $restaurants = $resRef->getValue();
+        foreach ($restaurants as $restaurant) {
+            $all_res[] = $restaurant;
+        }
+        return view('page.Homepage', compact('all_res'));
+
     }
 
     public function postImage(Request $request){
@@ -127,5 +134,9 @@ class PageController extends BaseController
         $user = $request->session()->get('user');
 
         return view('page.profile',['user'=>$user]);
+    }
+
+    public function getAddStore(){
+        return view('page.addStore');
     }
 }

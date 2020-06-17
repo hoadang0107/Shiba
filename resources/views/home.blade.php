@@ -56,6 +56,7 @@
     <script src="../fashi/js/owl.carousel.min.js"></script>
     <script src="../fashi/js/main.js"></script>
     <script src="../fashi/js/profile.js"></script>
+    <script src="../fashi/js/addstore.js"></script>
 </body>
 
 </html>
