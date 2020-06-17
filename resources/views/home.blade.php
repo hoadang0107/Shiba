@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="../fashi/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="../fashi/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../fashi/css/style.css" type="text/css">
+
+    <link rel="stylesheet" href="../fashi/css/profileStyle.css" type="text/css">
 </head>
 
 <body>
@@ -53,6 +55,7 @@
     <script src="../fashi/js/jquery.slicknav.js"></script>
     <script src="../fashi/js/owl.carousel.min.js"></script>
     <script src="../fashi/js/main.js"></script>
+    <script src="../fashi/js/profile.js"></script>
 </body>
 
 </html>

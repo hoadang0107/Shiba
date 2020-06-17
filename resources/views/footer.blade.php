@@ -4,7 +4,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="../fashi/img/logo_shiba.png" alt=""></a>
+                            <a href="#"><img src="../fashi/img/logo_shiba.png" alt="" ></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>

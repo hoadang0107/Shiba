@@ -44,3 +44,8 @@ Route::post('signin', 'PageController@postSignIn');
     'as'=> 'signup',
     'uses' => 'PageController@postSignUp'
 ]);*/
+
+Route::get('profile',[
+    'as'=> 'profile',
+    'uses' => 'PageController@getProfile'
+]);

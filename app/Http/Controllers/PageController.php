@@ -110,4 +110,7 @@ class PageController extends BaseController
 
     }
     
+    public function getProfile(){
+        return view('page.profile');
+    }
 }

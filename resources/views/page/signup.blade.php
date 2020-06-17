@@ -48,6 +48,7 @@
 								<input type="file" id="img_up" name="img_up" style="display: none"/>
 							</div>
 							<div class="group-input">
+                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
 								<p id="Up_img" style="cursor: pointer;">Upload Avatar</p>
 							</div>
                             <button type="submit" class="site-btn register-btn">REGISTER</button>
