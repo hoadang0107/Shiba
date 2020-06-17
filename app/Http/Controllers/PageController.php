@@ -9,13 +9,21 @@ use Illuminate\Support\MessageBag;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\LogoutRequest;
 use App\Services\UserService;
+use Illuminate\Support\Facades\View;
 
 class PageController extends BaseController
 {
+
+    
     public function getIndex(Request $request){
-        $user1 = $request->session()->get('user');
-        return view('page.Homepage')->with('user1',$user1);
+        $user = $request->session()->get('user');
+        View::share('user', $user);
+        return view('page.Homepage',['user'=>$user]);
         
+    }
+
+    public function postImage(Request $request){
+        $user = $request->session()->get('user');
     }
 
     public function getSignUp(Request $request){
@@ -58,6 +66,7 @@ class PageController extends BaseController
             'id' => array_key_first($users),
             'email' => $user['email'],
             'username' => $user['username'],
+            'avatar'=>$user['avatar'],
         ];
 
         $request->session()->put('user', $userRef);
@@ -79,6 +88,9 @@ class PageController extends BaseController
             return redirect()->back()->withInput()->withErrors($errors);
         }
         $now  = Carbon::now();
+        if(!$request->img_up){
+            $request->img_up = '';
+        }
 
         $userRef = $this->database->getReference('users')->push([
                 'email' => $request->email,
@@ -91,9 +103,10 @@ class PageController extends BaseController
                 
             ]);
         $userRef1 = [
-            'id' => array_key_first($users),
-            'email' => $user['email'],
-            'username' => $user['username'],
+            'id' => $userRef->getKey(),
+            'email' => $request->email,
+            'username' => $request->name,
+            'avatar'=>$request->img_up,
         ];
 
         $request->session()->put('user', $userRef1);
@@ -110,7 +123,9 @@ class PageController extends BaseController
 
     }
     
-    public function getProfile(){
-        return view('page.profile');
+    public function getProfile(Request $request){
+        $user = $request->session()->get('user');
+
+        return view('page.profile',['user'=>$user]);
     }
 }

@@ -8,6 +8,7 @@
                 <div class="card-body">
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
+                            <form method="POST" action="{{ route('image') }}">
                             <div class="image-container">
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" id="imgProfile" class="img-circle img-thumbnail" alt="avatar">
                                 <div class="middle">
@@ -16,13 +17,14 @@
                                 </div>
                             </div>
                             <div class="userData ml-3">
-                                <h2>USER PROFILE</h2>
+                                <h3>USER PROFILE</h3>
                                 <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Video Uploads</h6>
                                 <h6 class="d-block"><a href="javascript:void(0)">300</a> Blog Posts</h6>
                             </div>
                             <div class="ml-auto">
-                                <input type="button" class="site-btn register-btn btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                <input type="submit" class="site-btn register-btn btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
                             </div>
+                            </form>
                         </div>
                     </div>
 
@@ -45,7 +47,7 @@
                                             <label style="font-weight:bold;">User Name</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            Jamshaid Kamran
+                                            {{$user['username']}}
                                             <div class="group-input edit_profile">
                                                 <input type="text" name="name" id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" />
                                                 @if ($errors->has('password'))
@@ -65,14 +67,9 @@
                                             <label style="font-weight:bold;">Email</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            Email
+                                            {{$user['email']}}
                                             <div class="group-input edit_profile">
-                                                <input type="email" id="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" />
-                                                @if ($errors->has('email'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                                @endif
+                                                <input type="email" id="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{$user['email']}}" disabled/>
                                             </div>
                                         </div>
                                     </div>

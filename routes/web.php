@@ -22,6 +22,7 @@ Route::post('/auth', 'UserController@login')->name('auth');
 
 Route::get('user', 'UserController@index');
 Route::post('signup', 'PageController@postSignUp');
+Route::post('image', 'PageController@postImage');
 
 
 Route::get('/',[
@@ -40,10 +41,10 @@ Route::get('signin',[
 ]);
 Route::post('signin', 'PageController@postSignIn');
 
-/*Route::post('signup',[
-    'as'=> 'signup',
-    'uses' => 'PageController@postSignUp'
-]);*/
+Route::get('signout',[
+    'as'=> 'signout',
+    'uses' => 'PageController@getLogout'
+]);
 
 Route::get('profile',[
     'as'=> 'profile',
