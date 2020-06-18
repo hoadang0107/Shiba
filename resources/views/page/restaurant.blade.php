@@ -22,8 +22,8 @@
                         <div class="col-lg-6">
                             <div class="product-details">
                                 <div class="pd-title">
-                                    <span>{{$res['address']}}</span>
-                                    <h3>name</h3>
+                                    <span>{{$resRef['address']}}</span>
+                                    <h3>{{$resRef['name']}}</h3>
                                     <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                 </div>
                                 <div class="pd-rating">

@@ -22,7 +22,8 @@ Route::post('/auth', 'UserController@login')->name('auth');
 
 Route::get('user', 'UserController@index');
 Route::post('signup', 'PageController@postSignUp');
-Route::post('image', 'PageController@postImage');
+
+Route::post('profile', 'PageController@postProfile');
 
 
 Route::get('/',[
@@ -55,6 +56,7 @@ Route::get('addStore',[
     'as'=> 'addStore',
     'uses' => 'PageController@getAddStore'
 ]);
+Route::post('addStore','PageController@postAddStore');
 Route::get('restaurant-detail/{id}',[
     'as'=> 'restaurant-detail',
     'uses' => 'RestaurantController@getRestaurant'

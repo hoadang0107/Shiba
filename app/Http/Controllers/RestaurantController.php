@@ -18,9 +18,9 @@ class RestaurantController extends BaseController
             ->equalTo($id)
             ->getSnapshot()
             ->getValue();
-        $res = reset($resRef);
-        echo $res['name'];
-		return view('page.restaurant', compact('res'));
+        //$res = reset($resRef);
+        //echo $res['name'];
+		return view('page.restaurant', compact('resRef'));
 	}
 	public function index(){
 		 $resRef = null;

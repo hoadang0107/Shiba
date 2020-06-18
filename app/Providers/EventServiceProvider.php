@@ -20,6 +20,11 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    protected $listen1 = [
+        'App\Events\ChangeImage' => [
+            'App\Listeners\ChangeProfile',
+        ],
+    ];
     /**
      * Register any events for your application.
      *

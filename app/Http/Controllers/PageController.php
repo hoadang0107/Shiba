@@ -29,8 +29,26 @@ class PageController extends BaseController
 
     }
 
-    public function postImage(Request $request){
+    public function postProfile(LogoutRequest $request){
         $user = $request->session()->get('user');
+        $email = $user['email'];
+        $password = $request->input('password');
+        $name = $request->input('name');
+        $passwordAgain = $request->input('passwordAgain');
+        $now  = Carbon::now();
+
+
+        $update = ['/avatar'  => $request->file,
+                    '/password'=> bcrypt($password),
+                    '/name'=>$name,
+                    'updated_at' => $now
+                    ];
+        $user1 = $this->database->getReference('users')
+            ->orderByChild('email')
+            ->equalTo($user['email'])
+            ->update($update);
+        return redirect()->route('profile');
+
     }
 
     public function getSignUp(Request $request){
@@ -96,7 +114,7 @@ class PageController extends BaseController
         }
         $now  = Carbon::now();
         if(!$request->img_up){
-            $request->img_up = '';
+            $request->img_up = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
         }
 
         $userRef = $this->database->getReference('users')->push([
@@ -136,7 +154,43 @@ class PageController extends BaseController
         return view('page.profile',['user'=>$user]);
     }
 
-    public function getAddStore(){
-        return view('page.addStore');
+    public function getAddStore(Request $request){
+        if($request->session()->get('user')){
+            return view('page.addStore');
+        }else
+
+        return view('page.signin');
+    }
+    public function postAddStore(Request $request){
+
+        $user = $request->session()->get('user');
+        $name = $request->name;
+        $address = $request->address;
+        $phone = $request->phone;
+        $img_store = $request->img_store;
+        $menu = $request->menu;
+        $description = $request->description;
+        $price = $request->price;
+        $now  = Carbon::now();
+        if(!$img_store){
+            $img_store = '../fashi/img/nhahang_2.jpg';
+        }
+
+        $userRef = $this->database->getReference('restaurants')->push([
+                'name' => $name,
+                'address' =>$address,
+                'image'=>$img_store,
+                'menu'=>$menu,
+                'intro'=>$description,
+                'price'=>$price,
+                'userId'=>$user['id'],
+                'id'=>'6',
+                'created_at' => $now,
+                'updated_at' => '',
+                'deleted_at' => '',
+                
+        ]);
+
+        return redirect()->route('HomePage');
     }
 }
